@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almadina Istanbul — Turkish Pizza &amp; Döner, Johar Town Lahore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red: #C41E24;
+    --red-deep: #7C1015;
+    --red-shadow: #4E0A0D;
+    --gold: #F5B400;
+    --gold-light: #FFD666;
+    --ink: #17110D;
+    --ink-soft: #241A14;
+    --cream: #FBF3E3;
+    --cream-dim: #F0E4CC;
+    --herb: #4B7A3D;
+    --line: rgba(245,180,0,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    background:var(--ink);
+    color:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .display{font-family:'Anton', sans-serif; letter-spacing:0.01em;}
+  .eyebrow{
+    font-size:12px; font-weight:800; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(23,17,13,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; max-width:1180px; margin:0 auto;
+  }
+  .brandmark{display:flex; align-items:center; gap:10px;}
+  .brandmark .badge{
+    width:40px; height:40px; border-radius:9px;
+    background:linear-gradient(155deg, var(--red), var(--red-deep));
+    border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Anton',sans-serif; color:var(--gold); font-size:15px; line-height:1;
+    box-shadow:0 3px 0 var(--red-shadow);
+  }
+  .brandmark .name{font-family:'Anton',sans-serif; font-size:17px; letter-spacing:0.02em; color:var(--cream);}
+  .brandmark .name span{color:var(--gold);}
+  nav.links{display:flex; gap:30px; align-items:center;}
+  nav.links a{
+    font-size:13.5px; font-weight:700; color:var(--cream); opacity:0.82;
+    text-transform:uppercase; letter-spacing:0.05em;
+  }
+  nav.links a:hover{opacity:1; color:var(--gold);}
+  .cta-btn{
+    background:var(--gold); color:var(--ink); font-weight:800; font-size:13.5px;
+    padding:11px 20px; border-radius:8px; text-transform:uppercase; letter-spacing:0.04em;
+    box-shadow:0 3px 0 #a97e00;
+    transition:transform .15s ease;
+    white-space:nowrap;
+  }
+  .cta-btn:hover{transform:translateY(-2px);}
+  #nav-check{display:none;}
+  .nav-toggle{
+    display:none; width:38px; height:38px; border-radius:8px;
+    border:2px solid var(--gold); background:transparent;
+    align-items:center; justify-content:center; flex-direction:column; gap:5px;
+    cursor:pointer; flex-shrink:0;
+  }
+  .nav-toggle span{width:17px; height:2px; background:var(--gold); border-radius:2px;}
+  .mobile-links{
+    display:flex; flex-direction:column;
+    max-height:0; overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .mobile-links a{
+    padding:13px 28px; border-top:1px solid var(--line);
+    font-size:13.5px; font-weight:700; color:var(--cream); opacity:0.85;
+    text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .mobile-links a:hover{opacity:1; color:var(--gold);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:78px 28px 90px;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(196,30,36,0.35), transparent 60%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 34px),
+      var(--ink);
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle, rgba(245,180,0,0.10) 1px, transparent 1px);
+    background-size:26px 26px;
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative; z-index:2;
+    font-family:'Caveat', cursive; font-size:22px; color:var(--gold-light);
+    margin-bottom:6px; font-weight:600;
+  }
+
+  /* the sign / logo badge */
+  .signboard{
+    position:relative; z-index:2;
+    margin-top:6px;
+    width:min(720px, 100%);
+    background:linear-gradient(180deg, var(--red) 0%, var(--red-deep) 100%);
+    border:5px solid var(--gold);
+    border-radius:10px;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.35),
+      0 22px 50px rgba(0,0,0,0.55),
+      inset 0 2px 0 rgba(255,255,255,0.15);
+    padding:26px 22px 20px;
+  }
+  .sign-row{
+    display:flex; align-items:center; justify-content:center; gap:18px;
+    flex-wrap:wrap;
+  }
+  .sign-title{
+    font-family:'Anton', sans-serif;
+    color:var(--gold);
+    font-size:clamp(34px, 7vw, 58px);
+    line-height:0.92;
+    text-shadow:
+      2px 2px 0 #a97e00,
+      3px 3px 0 #8a6600,
+      4px 4px 6px rgba(0,0,0,0.45);
+    text-align:center;
+  }
+  .skewer-emblem{
+    width:88px; height:88px; flex-shrink:0;
+  }
+  .plate{
+    margin:16px auto 0;
+    background:var(--ink);
+    border:2px solid var(--gold);
+    border-radius:6px;
+    padding:8px 22px;
+    display:inline-block;
+  }
+  .plate .p1{font-family:'Anton',sans-serif; color:var(--gold); font-size:19px; letter-spacing:0.03em;}
+  .plate .p2{font-size:11px; color:var(--cream); opacity:0.8; letter-spacing:0.08em; text-transform:uppercase; margin-top:2px;}
+
+  .hero-sub{
+    position:relative; z-index:2;
+    max-width:560px; margin:26px auto 0;
+    color:var(--cream); opacity:0.82; font-size:16px; line-height:1.6;
+  }
+  .hero-ctas{
+    position:relative; z-index:2;
+    display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; justify-content:center;
+  }
+  .btn-primary{
+    background:var(--gold); color:var(--ink); font-weight:800; font-size:14.5px;
+    padding:15px 26px; border-radius:9px; text-transform:uppercase; letter-spacing:0.04em;
+    box-shadow:0 4px 0 #a97e00;
+  }
+  .btn-ghost{
+    border:2px solid var(--gold); color:var(--gold); font-weight:800; font-size:14.5px;
+    padding:13px 24px; border-radius:9px; text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .hero-stats{
+    position:relative; z-index:2;
+    display:flex; gap:34px; margin-top:44px; flex-wrap:wrap; justify-content:center;
+  }
+  .hstat b{display:block; font-family:'Anton',sans-serif; font-size:26px; color:var(--gold);}
+  .hstat span{font-size:12px; opacity:0.7; text-transform:uppercase; letter-spacing:0.08em;}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .marquee{
+    background:var(--gold); color:var(--ink); overflow:hidden; white-space:nowrap;
+    border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
+  }
+  .marquee-track{display:inline-block; padding:10px 0; animation:scroll 24s linear infinite;}
+  .marquee span{font-family:'Anton',sans-serif; font-size:14px; margin:0 22px; letter-spacing:0.04em;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:90px 0;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 54px;}
+  .section-head h2{
+    font-family:'Anton',sans-serif; font-size:clamp(30px,4.5vw,44px); color:var(--cream); margin-top:10px; line-height:1.05;
+  }
+  .section-head p{color:var(--cream); opacity:0.68; margin-top:14px; font-size:15.5px; line-height:1.6;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--ink-soft);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .about-art{
+    position:relative; border-radius:16px; overflow:hidden; aspect-ratio:4/3.1;
+    border:3px solid var(--gold);
+  }
+  .about-art img{width:100%; height:100%; object-fit:cover;}
+  .about-art .tag{
+    position:absolute; bottom:16px; left:16px;
+    background:var(--red); border:2px solid var(--gold); border-radius:8px;
+    padding:8px 14px; font-family:'Anton',sans-serif; font-size:13px; color:var(--gold);
+  }
+  .about-copy .eyebrow{margin-bottom:12px; display:block;}
+  .about-copy h2{font-family:'Anton',sans-serif; font-size:clamp(28px,4vw,38px); line-height:1.08; margin-bottom:18px;}
+  .about-copy p{opacity:0.75; line-height:1.75; font-size:15.5px; margin-bottom:16px;}
+  .about-list{display:flex; flex-direction:column; gap:12px; margin-top:22px;}
+  .about-list li{display:flex; gap:12px; align-items:flex-start; list-style:none; font-size:14.5px; opacity:0.85;}
+  .about-list b{color:var(--gold);}
+
+  /* ---------- MENU ---------- */
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
+  }
+  .menu-grid .card:first-child{grid-column:span 2; grid-row:span 2;}
+  .card{
+    position:relative; border-radius:16px; overflow:hidden;
+    background:var(--ink-soft); border:1px solid var(--line);
+    display:flex; flex-direction:column;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .card:hover{transform:translateY(-6px); border-color:var(--gold);}
+  .card .shot{position:relative; width:100%; aspect-ratio:16/11; overflow:hidden;}
+  .menu-grid .card:first-child .shot{aspect-ratio:16/13;}
+  .card .shot img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .card:hover .shot img{transform:scale(1.06);}
+  .card .shot::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 55%, rgba(23,17,13,0.85) 100%);
+  }
+  .card .price-tag{
+    position:absolute; top:12px; right:12px; z-index:2;
+    background:var(--gold); color:var(--ink); font-family:'Anton',sans-serif;
+    font-size:13px; padding:6px 11px; border-radius:7px;
+  }
+  .card .body{padding:18px 20px 22px;}
+  .card h3{font-family:'Anton',sans-serif; font-size:19px; color:var(--cream); letter-spacing:0.01em;}
+  .menu-grid .card:first-child h3{font-size:25px;}
+  .card p{font-size:13.5px; opacity:0.65; margin-top:8px; line-height:1.55;}
+  .spice{display:inline-flex; align-items:center; gap:6px; margin-top:12px; font-size:11.5px; color:var(--gold); font-weight:800; text-transform:uppercase; letter-spacing:0.06em;}
+
+  .menu-note{text-align:center; margin-top:44px; opacity:0.6; font-size:14px;}
+
+  /* ---------- SIGNATURE / SPIT ---------- */
+  .signature{
+    background:linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    text-align:center;
+  }
+  .spit-wrap{display:flex; justify-content:center; margin-top:10px;}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--ink-soft);}
+  .reviews-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .ticket{
+    background:var(--cream); color:var(--ink); border-radius:4px;
+    padding:26px 24px; position:relative;
+    box-shadow:0 14px 30px rgba(0,0,0,0.35);
+  }
+  .ticket::before, .ticket::after{
+    content:""; position:absolute; width:18px; height:18px; background:var(--ink-soft);
+    border-radius:50%; top:50%; transform:translateY(-50%);
+  }
+  .ticket::before{left:-9px;} .ticket::after{right:-9px;}
+  .ticket .stars{color:var(--red); font-size:15px; letter-spacing:2px; margin-bottom:12px;}
+  .ticket p{font-size:14.5px; line-height:1.65; font-style:italic; opacity:0.85;}
+  .ticket .who{margin-top:16px; font-weight:800; font-size:13px; display:flex; justify-content:space-between; opacity:0.7;}
+  .rating-banner{
+    display:flex; align-items:center; justify-content:center; gap:22px;
+    margin-top:50px; flex-wrap:wrap;
+  }
+  .rating-banner .big{font-family:'Anton',sans-serif; font-size:56px; color:var(--gold);}
+  .rating-banner .side{text-align:left;}
+  .rating-banner .side .stars{color:var(--gold); font-size:18px; letter-spacing:2px;}
+  .rating-banner .side span{display:block; font-size:13px; opacity:0.6; margin-top:4px;}
+
+  /* ---------- LOCATION ---------- */
+  .location{
+    background:linear-gradient(155deg, var(--red) 0%, var(--red-deep) 60%, var(--ink) 100%);
+  }
+  .loc-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;}
+  .loc-grid h2{font-family:'Anton',sans-serif; font-size:clamp(30px,4.5vw,42px); line-height:1.08; margin-bottom:20px;}
+  .loc-grid > div:first-child .eyebrow{color:var(--gold-light);}
+  .loc-item{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.18);}
+  .loc-item .ico{
+    width:38px; height:38px; border-radius:9px; background:rgba(0,0,0,0.25);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:17px;
+  }
+  .loc-item b{display:block; font-size:14.5px;}
+  .loc-item span{font-size:13.5px; opacity:0.78;}
+  .map-card{
+    background:rgba(0,0,0,0.28); border:2px solid var(--gold); border-radius:16px;
+    padding:26px; text-align:center;
+  }
+  .map-card .pin{
+    width:60px; height:60px; margin:0 auto 16px; border-radius:50%;
+    background:var(--gold); display:flex; align-items:center; justify-content:center; font-size:26px;
+  }
+  .map-card h4{font-family:'Anton',sans-serif; font-size:20px; margin-bottom:8px;}
+  .map-card p{font-size:13.5px; opacity:0.8; line-height:1.6; margin-bottom:18px;}
+  .map-card .btn-primary{width:100%;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); padding:50px 0 28px; border-top:1px solid var(--line);}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:22px; padding-bottom:30px;}
+  .foot-links{display:flex; gap:24px; flex-wrap:wrap;}
+  .foot-links a{font-size:13.5px; opacity:0.7;}
+  .foot-links a:hover{opacity:1; color:var(--gold);}
+  .foot-bottom{
+    border-top:1px solid var(--line); padding-top:22px; text-align:center;
+    font-size:12.5px; opacity:0.5;
+  }
+
+  @media (max-width: 900px){
+    nav.links{display:none;}
+    .nav-toggle{display:flex;}
+    #nav-check:checked ~ .mobile-links{max-height:320px;}
+    .about-grid, .loc-grid{grid-template-columns:1fr;}
+    .menu-grid{grid-template-columns:1fr 1fr;}
+    .menu-grid .card:first-child{grid-column:span 2;}
+    .reviews-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .menu-grid{grid-template-columns:1fr;}
+    .menu-grid .card:first-child{grid-column:span 1;}
+    .hero{padding:56px 18px 60px;}
+    .signboard{padding:20px 14px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <input type="checkbox" id="nav-check">
+  <div class="navbar">
+    <div class="brandmark">
+      <div class="badge">AI</div>
+      <div class="name">ALMADINA <span>ISTANBUL</span></div>
+    </div>
+    <nav class="links">
+      <a href="#menu">Menu</a>
+      <a href="#about">Our Story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#location">Location</a>
+    </nav>
+    <a href="#location" class="cta-btn">Order Now</a>
+    <label for="nav-check" class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+  <nav class="mobile-links" onclick="document.getElementById('nav-check').checked=false">
+    <a href="#menu">Menu</a>
+    <a href="#about">Our Story</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#location">Location</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Afiyet olsun — welcome to the table</div>
+
+  <div class="signboard">
+    <div class="sign-row">
+      <svg class="skewer-emblem" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="47" fill="var(--ink)" stroke="var(--gold)" stroke-width="3"/>
+        <rect x="47" y="14" width="6" height="72" rx="3" fill="#D9A441"/>
+        <path d="M40 26 Q50 20 60 26 L58 40 Q50 36 42 40 Z" fill="#8B5A2B"/>
+        <path d="M39 40 Q50 35 61 40 L59 52 Q50 47 41 52 Z" fill="#A9702F"/>
+        <path d="M40 52 Q50 47 60 52 L58 64 Q50 60 42 64 Z" fill="#8B5A2B"/>
+        <path d="M41 64 Q50 60 59 64 L57 74 Q50 71 43 74 Z" fill="#C48B3F"/>
+        <path d="M30 78 L70 78 L64 84 L36 84 Z" fill="#3A3A3A"/>
+      </svg>
+      <h1 class="sign-title">ALMADINA<br>ISTANBUL</h1>
+    </div>
+    <div class="plate">
+      <div class="p1">ZIA &amp; ZIKI</div>
+      <div class="p2">Turkish Pizza &amp; Döner</div>
+    </div>
+  </div>
+
+  <p class="hero-sub">Slow-roasted döner, stone-fired lahmacun, and Istanbul-style pide — carved fresh, wrapped hot, and served around the clock in Johar Town, Lahore.</p>
+
+  <div class="hero-ctas">
+    <a href="#menu" class="btn-primary">See the Menu</a>
+    <a href="tel:+923011099944" class="btn-ghost">Call +92 301 1099944</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat"><b>4.1★</b><span>45 Google reviews</span></div>
+    <div class="hstat"><b>24 Hrs</b><span>open every day</span></div>
+    <div class="hstat"><b>Rs 1–2K</b><span>per person</span></div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>★ FRESH OFF THE SPIT</span><span>★ TURKISH PIZZA &amp; DÖNER</span><span>★ OPEN 24 HOURS</span><span>★ DINE-IN &amp; TAKEOUT</span><span>★ JOHAR TOWN, LAHORE</span>
+    <span>★ FRESH OFF THE SPIT</span><span>★ TURKISH PIZZA &amp; DÖNER</span><span>★ OPEN 24 HOURS</span><span>★ DINE-IN &amp; TAKEOUT</span><span>★ JOHAR TOWN, LAHORE</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-art">
+      <img src="images/about-doner.jpg" alt="Fresh Turkish döner kebab and wraps at Almadina Istanbul" loading="lazy">
+      <div class="tag">Carved to order</div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">Our Story</span>
+      <h2>A slice of Istanbul,<br>parked in Johar Town</h2>
+      <p>Almadina Istanbul brings the Zia &amp; Ziki kitchen to Civic Centre — thin-cut döner stacked high on the spit, dough stretched and fired the Turkish way, and sauces made fresh every morning, not bottled.</p>
+      <p>No pauses, no closing time. Whether it's a 2am craving or a Sunday family order, the grill stays lit.</p>
+      <ul class="about-list">
+        <li><b>📍</b> F77Q+57M, Civic Centre Block D2, Phase 1, Johar Town, Lahore</li>
+        <li><b>🕐</b> Open 24 hours, every day of the week</li>
+        <li><b>🍽️</b> Dine-in, takeout &amp; delivery via foodpanda</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="signature">
+  <div class="wrap section-head">
+    <span class="eyebrow">Signature Craft</span>
+    <h2>Straight off the spit</h2>
+    <p>The döner turns slow and steady all day — layered, seared on the outside, shaved thin the second it's ordered.</p>
+  </div>
+  <div class="spit-wrap">
+    <svg width="220" height="300" viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="103" y="10" width="14" height="260" rx="7" fill="#B98A45"/>
+      <circle cx="110" cy="14" r="10" fill="var(--gold)"/>
+      <g style="transform-origin:110px 150px; animation:spin 6s linear infinite;">
+        <ellipse cx="110" cy="60" rx="46" ry="20" fill="#8B5A2B"/>
+        <ellipse cx="110" cy="88" rx="52" ry="22" fill="#A9702F"/>
+        <ellipse cx="110" cy="118" rx="55" ry="23" fill="#8B5A2B"/>
+        <ellipse cx="110" cy="150" rx="56" ry="24" fill="#C48B3F"/>
+        <ellipse cx="110" cy="182" rx="53" ry="23" fill="#8B5A2B"/>
+        <ellipse cx="110" cy="212" rx="47" ry="21" fill="#A9702F"/>
+        <ellipse cx="110" cy="238" rx="38" ry="17" fill="#8B5A2B"/>
+      </g>
+      <rect x="20" y="280" width="180" height="14" rx="4" fill="var(--red)"/>
+      <rect x="20" y="280" width="180" height="14" rx="4" fill="none" stroke="var(--gold)" stroke-width="2"/>
+    </svg>
+  </div>
+  <style>@keyframes spin{from{transform:rotateY(0deg);} to{transform:rotateY(360deg);}}</style>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Menu</span>
+      <h2>Built around the spit &amp; the stone oven</h2>
+      <p>A short list, made properly. Every plate below is carved, folded, or fired fresh once you order it.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="card">
+        <div class="shot">
+          <img src="images/menu-shawarma.jpg" alt="Zia special shawarma wrap with fries" loading="lazy">
+          <span class="price-tag">Rs 550+</span>
+        </div>
+        <div class="body">
+          <h3>Zia's Special Shawarma</h3>
+          <p>Beef or chicken döner, shaved thin, rolled hot with garlic sauce, pickles and fries on the side.</p>
+          <span class="spice">🌶 House sauce · Best seller</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="shot">
+          <img src="images/menu-lahmacun.jpg" alt="Lahmacun Turkish pizza with herbs" loading="lazy">
+          <span class="price-tag">Rs 450+</span>
+        </div>
+        <div class="body">
+          <h3>Lahmacun — Turkish Pizza</h3>
+          <p>Paper-thin dough, spiced minced beef, fired hot and rolled with parsley, onion and lemon.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="shot">
+          <img src="images/menu-pide.jpg" alt="Turkish pide with cheese and toppings" loading="lazy">
+          <span class="price-tag">Rs 650+</span>
+        </div>
+        <div class="body">
+          <h3>Istanbul Cheese Pide</h3>
+          <p>Boat-shaped dough baked in a hot oven, loaded with molten cheese and your choice of topping.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="shot">
+          <img src="images/menu-baklava.jpg" alt="Baklava dessert being prepared" loading="lazy">
+          <span class="price-tag">Rs 300+</span>
+        </div>
+        <div class="body">
+          <h3>Baklava</h3>
+          <p>Layered filo, crushed pistachio, soaked in warm syrup — the sweet close to any order.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note">Prices vary by size &amp; add-ons · Full menu available in-store and on foodpanda.pk</p>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Word on the Street</span>
+      <h2>What Johar Town is saying</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p>"Saw them on Facebook and had to try it — sauces were on point and portions felt generous for the price."</p>
+        <div class="who"><span>Hassan R.</span><span>Local Guide</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★☆</div>
+        <p>"My go-to order when I want something quick but still feels like a proper meal, not just fast food."</p>
+        <div class="who"><span>Regular Customer</span><span>Johar Town</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p>"Ordered late at night and the kitchen was still going strong — that 24 hour promise actually holds up."</p>
+        <div class="who"><span>Late-Night Guest</span><span>Delivery Order</span></div>
+      </div>
+    </div>
+    <div class="rating-banner">
+      <div class="big">4.1</div>
+      <div class="side">
+        <div class="stars">★★★★☆</div>
+        <span>Based on 45 Google reviews</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="wrap loc-grid">
+    <div>
+      <span class="eyebrow">Find Us</span>
+      <h2>Open around the clock in Johar Town</h2>
+      <div class="loc-item">
+        <div class="ico">📍</div>
+        <div><b>Address</b><span>F77Q+57M, Civic Centre Block D2, Phase 1, Johar Town, Lahore, Pakistan</span></div>
+      </div>
+      <div class="loc-item">
+        <div class="ico">🕐</div>
+        <div><b>Hours</b><span>Open 24 hours, every day</span></div>
+      </div>
+      <div class="loc-item">
+        <div class="ico">📞</div>
+        <div><b>Phone</b><span>+92 301 1099944</span></div>
+      </div>
+      <div class="loc-item" style="border-bottom:none;">
+        <div class="ico">🛵</div>
+        <div><b>Delivery</b><span>Order online via foodpanda.pk, or call for takeout</span></div>
+      </div>
+    </div>
+    <div class="map-card">
+      <div class="pin">📍</div>
+      <h4>Almadina Istanbul</h4>
+      <p>Civic Centre, Block D2, Phase 1<br>Johar Town, Lahore</p>
+      <a href="tel:+923011099944" class="btn-primary">Call to Order</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brandmark">
+        <div class="badge">AI</div>
+        <div class="name">ALMADINA <span>ISTANBUL</span></div>
+      </div>
+      <div class="foot-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">Our Story</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#location">Location</a>
+      </div>
+    </div>
+    <div class="foot-bottom">Demo landing page for Almadina Istanbul (Zia &amp; Ziki Turkish Pizza &amp; Döner) · Johar Town, Lahore</div>
+  </div>
+</footer>
+
+</body>
+</html>
